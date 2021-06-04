@@ -1,0 +1,138 @@
+public class MyRectangle2DRobertElmore {
+
+	public static void main(String[] args){
+
+		MyRectangle2D r1 = new MyRectangle2D(5.5, 4.9,2.0,2.0);
+		MyRectangle2D r2 = new MyRectangle2D(4.0, 5.0,2.0,2.0);
+		System.out.println("Rectangle 1 is " + r1.getLength() + " by " + r1.getWidth());
+		System.out.println("Rectangle 2 is " + r2.getLength() + " by " + r2.getWidth());
+		r1.setLength(4.0);r2.setLength(3.0);
+		System.out.println("Rectangle 1 is now" + r1.getLength() + " by " + r1.getWidth());
+		System.out.println("Rectangle 2 is now "+ r2.getLength() + " by " + r2.getWidth());
+		System.out.println(" two Rectangles Overlap (true/False)  "+r1.overlaps(r2));
+		System.out.println(" Point lies in Rectangle or Not   "+r1.contains(3,3));
+
+		   }
+
+		}
+class MyRectangle2D 
+{
+  
+  private double l;
+  private double w;
+  private double x;
+  private double y;
+   public MyRectangle2D(double a,double b,double c ,double d)
+   {
+       l=a;
+       w=b;
+       x=c;
+       y=d;
+   }
+public MyRectangle2D()
+{
+l=1;
+w=1;
+x=0;
+y=0;
+}
+public double getx()
+{
+return(x);
+}
+public double gety()
+{
+return(y);
+}
+
+   public double getLength()
+   {
+       return (l);
+   }
+    public double getWidth()
+   {
+       return (w);
+   }
+   double getArea()
+   {
+       return(l*w);
+   }
+   double getPerimeter()
+   {
+       return(2*(l+w));
+   }
+       public boolean contains(double a,double b)
+       {
+       double x1=x+w/2;
+       double x2=x-w/2;
+       double y1=y+l/2;
+       double y2=y-l/2;
+
+           if (a > x1 && a < x2 &&    b > y1 && b < y2)
+                   return true;
+                else
+                       return false;
+       }
+       public boolean overlaps(MyRectangle2D r1)
+       {
+       double x1=x+w/2;
+       double x2=x-w/2;
+       double y1=y+l/2;
+       double y2=y-l/2;
+       double rx1=r1.x+r1.w/2;
+       double rx2=r1.x-r1.w/2;
+       double ry1=r1.y+r1.l/2;
+       double ry2=r1.y-r1.l/2;
+           if (x1 == rx1 || y1 == ry1 || x2 == rx2  || y2 == ry2) {
+       // the line cannot have positive overlap
+       return false;
+   }
+
+   // If one rectangle is on left side of other
+   if (x1 >= rx1 || x2 >= rx2)
+       return false;
+
+   // If one rectangle is above other
+   if (y1 <= ry1 || y2 <= ry2)
+       return false;
+
+   return true;
+       }
+public void setx(double a)
+       {
+           x=a;
+       }
+public void sety(double a)
+       {
+           y=a;
+       }
+
+public void setLength(double a)
+       {
+           l=a;
+       }
+       public void setWidth(double a)
+      {
+      w=a;    
+   }
+public boolean contains(MyRectangle2D s)
+
+   {
+
+       if (s.x < x)
+           return false;
+       if (s.x > x + w)
+           return false;
+
+       if (s.y < y)
+
+           return false;
+
+       if (s.y > y + l)
+           return false;
+
+       return true;
+
+   }
+
+}
