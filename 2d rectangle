@@ -1,4 +1,4 @@
-public class MyRectangle2DRobertElmore {
+public class MyRectangle2D {
 
 	public static void main(String[] args){
 
